@@ -1,0 +1,146 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+    <script src="{% static 'js/app.js' %}"></script>
+    <title>MyBlog Navbar</title>
+</head>
+<body>
+    <nav class="bg-gray-200 shadow-md fixed top-0 left-0 w-full z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">MyBlog</div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600">Home</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">About</a>
+                <a href="#"# class="text-gray-600 hover:text-blue-600">Contact</a>
+
+                {% if user.is_authenticated %}
+                    <a href="#" class="text-gray-600 hover:text-blue-600">Profile</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600">Logout</a>
+                {% else %}
+                    <a href="#" class="text-gray-600 hover:text-blue-600">Sign Up</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600">Login</a>
+                {% endif %}
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button
+                id="mobile-menu-toggle"
+                class="md:hidden flex items-center text-gray-600 focus:outline-none"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div
+            id="mobile-menu"
+            class="md:hidden hidden absolute top-full left-0 w-full bg-white shadow-md"
+        >
+            <div class="flex flex-col items-center space-y-4 py-4">
+                <a href="#" class="text-gray-600 hover:text-blue-600">Home</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600">About</a>
+                <a href="{#  #}" class="text-gray-600 hover:text-blue-600">Contact</a>
+
+                {% if user.is_authenticated %}
+                    <a href="#" class="text-gray-600 hover:text-blue-600">Profile</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600">Logout</a>
+                {% else %}
+                    <a href="#" class="text-gray-600 hover:text-blue-600">Sign Up</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white">
+      <div class="container mx-auto px-6 py-20 text-center">
+        <h1 class="text-4xl font-bold">Welcome to MyBlog</h1>
+        <p class="mt-4 text-lg">
+          Discover amazing stories, tutorials, and insights from passionate
+          writers.
+        </p>
+        <a
+          href="#signup"
+          class="inline-block mt-6 px-6 py-3 text-blue-600 bg-white font-semibold rounded-lg shadow-md hover:bg-gray-200"
+        >
+          Sign Up Now
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-gray-800">About Us</h2>
+        <p class="mt-4 text-gray-600">
+          MyBlog is a platform where writers and readers connect. We offer a
+          place for creativity and sharing knowledge through engaging content.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800">Contact Us</h2>
+        <p class="mt-4 text-center text-gray-600">
+          Have questions? Feel free to reach out to us!
+        </p>
+        <form class="mt-8 max-w-lg mx-auto space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              placeholder="Your email"
+            />
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              placeholder="Your message"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+</body>
+</html>
